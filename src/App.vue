@@ -28,7 +28,7 @@
         Print
       </b-button>
       <div class="container">
-        <div class="datename">날짜: {{ today }}, 이름:</div>
+        <div class="datename print-only">날짜: {{ today }}, 이름:</div>
         <WritingPaper class="grey" :text="text" />
         <WritingPaper class="transparent" :text="text" />
       </div>
