@@ -11,6 +11,8 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
+const within = (n: number, min: number, max: number) => n >= min && n < max;
+
 @Component({})
 export default class WriteBook extends Vue {
   @Prop(String)
@@ -31,8 +33,8 @@ export default class WriteBook extends Vue {
           j += 1;
           break;
         } else if (
-          this.text.charCodeAt(i + j) < 256 &&
-          this.text.charCodeAt(i + j + 1) < 256
+          within(this.text.charCodeAt(i + j), 32, 256) &&
+          within(this.text.charCodeAt(i + j + 1), 32, 256)
         ) {
           row.push(this.text[i + j] + this.text[i + j + 1]);
           j += 2;
@@ -55,7 +57,7 @@ export default class WriteBook extends Vue {
   }
   get glyphPerRow() {
     return Math.max(
-      Math.ceil(Math.sqrt(this.text.length / 0.7) + 2) +
+      Math.ceil(Math.sqrt(this.text.length / 0.7) + 1) +
         Math.ceil((this.text.match(/\n/g) || []).length * 0.35),
       10
     );
