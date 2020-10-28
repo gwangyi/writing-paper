@@ -4,6 +4,7 @@
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
+            <img class="logo" src="./assets/logo.png" />
             쓰기 연습장 생성기
           </h1>
           <h2 class="subtitle">
@@ -150,5 +151,9 @@ $colors: (
 
 .datename {
   font-size: 1.5rem;
+}
+
+h1 img.logo {
+  height: 1em;
 }
 </style>
