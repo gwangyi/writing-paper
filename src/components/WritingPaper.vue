@@ -55,7 +55,7 @@ export default class WriteBook extends Vue {
   }
   get glyphPerRow() {
     return Math.max(
-      Math.ceil(Math.sqrt(this.text.length / 0.7) + 1) +
+      Math.ceil(Math.sqrt(this.text.length / 0.7) + 2) +
         Math.ceil((this.text.match(/\n/g) || []).length * 0.35),
       10
     );
@@ -64,13 +64,10 @@ export default class WriteBook extends Vue {
 </script>
 
 <style scoped>
-@import (
-  "https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
-);
 .page {
   display: flex;
   flex-direction: column;
-  margin: 0 0 5vh;
+  margin: 2rem 0 5vh;
 }
 .row {
   display: flex;

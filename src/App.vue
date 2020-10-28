@@ -12,21 +12,21 @@
         </div>
       </div>
     </section>
-    <section class="section">
+    <section class="section body">
       <div class="container screen-only">
         <b-field>
           <b-input maxlength="200" type="textarea" v-model="text"></b-input>
         </b-field>
+        <b-button
+          class="screen-only"
+          type="is-primary"
+          icon-left="printer"
+          expanded
+          @click="print"
+        >
+          Print
+        </b-button>
       </div>
-      <b-button
-        class="screen-only"
-        type="is-primary"
-        icon="print"
-        expanded
-        @click="print"
-      >
-        Print
-      </b-button>
       <div class="container">
         <div class="datename print-only">날짜: {{ today }}, 이름:</div>
         <WritingPaper class="grey" :text="text" />
@@ -134,6 +134,13 @@ $colors: (
   .screen-only {
     display: none !important;
   }
+  .footer {
+    padding: 0;
+    margin-top: -3rem;
+  }
+  .section.body {
+    padding-top: 0;
+  }
 }
 @media screen {
   .print-only {
@@ -142,6 +149,6 @@ $colors: (
 }
 
 .datename {
-  font-size: 5vw;
+  font-size: 1.5rem;
 }
 </style>
