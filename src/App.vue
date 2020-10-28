@@ -58,8 +58,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Watch, Vue } from "vue-property-decorator";
 import WritingPaper from "./components/WritingPaper.vue";
+
+const DEFAULT_TEXT =
+  "여기에 문장을 쓰세요. 반각 문자는 두 글자가 한 칸에 들어갑니다. abcde.";
 
 @Component({
   components: {
@@ -68,7 +71,12 @@ import WritingPaper from "./components/WritingPaper.vue";
 })
 export default class App extends Vue {
   private text =
-    "여기에 문장을 쓰세요. 반각 문자는 두 글자가 한 칸에 들어갑니다. abcde.";
+    decodeURIComponent(new URL(location.href).hash.substr(1)) || DEFAULT_TEXT;
+
+  @Watch("text")
+  private onText() {
+    history.replaceState({}, "", "#" + this.text);
+  }
 
   get today() {
     return new Date().toLocaleDateString();
